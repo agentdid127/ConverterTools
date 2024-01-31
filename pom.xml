@@ -15,10 +15,13 @@
     </modules>
 
     <properties>
+        <outputName>ConverterTools</outputName>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    
     <build>
         <defaultGoal>clean install</defaultGoal>
         <finalName>${outputName}-${project.artifactId}-${project.version}</finalName>
