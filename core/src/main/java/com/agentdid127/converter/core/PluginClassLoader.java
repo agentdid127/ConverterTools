@@ -13,15 +13,14 @@ import java.util.List;
  */
 public class PluginClassLoader extends URLClassLoader {
 
-  public static final List<String> SHARED_PACKAGES = Arrays.asList(
-      "com.agentdid127.converter.plugin"
-  );
+  private List<String> sharedPackages;
 
   private final ClassLoader parentClassLoader;
 
-  public PluginClassLoader(URL[] urls, ClassLoader parentClassLoader) {
+  public PluginClassLoader(URL[] urls, ClassLoader parentClassLoader, List<String> sharedPackages) {
     super(urls, null);
     this.parentClassLoader = parentClassLoader;
+    this.sharedPackages = sharedPackages;
   }
 
   @Override
@@ -30,7 +29,7 @@ public class PluginClassLoader extends URLClassLoader {
     // has the class loaded already?
     Class<?> loadedClass = findLoadedClass(name);
     if (loadedClass == null) {
-      final boolean isSharedClass = SHARED_PACKAGES.stream().anyMatch(name::startsWith);
+      final boolean isSharedClass = sharedPackages.stream().anyMatch(name::startsWith);
       if (isSharedClass) {
         loadedClass = parentClassLoader.loadClass(name);
       } else {

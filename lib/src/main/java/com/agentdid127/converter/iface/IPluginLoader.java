@@ -3,9 +3,9 @@ package com.agentdid127.converter.iface;
 import com.agentdid127.converter.Plugin;
 import java.util.Map;
 
-public interface IPluginLoader {
+public interface IPluginLoader<T extends Plugin> {
 
-  Map<String, Plugin> getPlugins();
+  Map<String, T> getPlugins();
 
 
 }
