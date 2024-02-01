@@ -2,22 +2,21 @@ package com.agentdid127.converter.core;
 
 import static java.util.Objects.requireNonNull;
 
+import com.agentdid127.converter.iface.IPluginLoader;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.ServiceLoader;
 import java.util.concurrent.atomic.AtomicBoolean;
 import com.agentdid127.converter.Plugin;
-import com.agentdid127.converter.Converter;
 
-public class PluginLoader {
+public class PluginLoader implements IPluginLoader {
 
     private final Map<String, Plugin> plugins = new HashMap<>();
     private final File pluginsDir;
@@ -64,13 +63,13 @@ public class PluginLoader {
 
 
     private void installPlugin(Plugin plugin) {
-	if (this.plugins.containsKey(plugin.getName())) {
-	    System.out.println("Failed to load Plugin: " + plugin.getName());
-	    return;
-	}
-	this.plugins.put(plugin.getName(), plugin);
-	plugin.onLoad();
-    }
+			if (this.plugins.containsKey(plugin.getName())) {
+				System.out.println("Failed to load Plugin: " + plugin.getName());
+				return;
+			}
+			this.plugins.put(plugin.getName(), plugin);
+			plugin.onLoad();
+		}
 
     
 

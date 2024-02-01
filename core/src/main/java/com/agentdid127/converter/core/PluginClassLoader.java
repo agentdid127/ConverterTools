@@ -14,7 +14,7 @@ import java.util.List;
 public class PluginClassLoader extends URLClassLoader {
 
   public static final List<String> SHARED_PACKAGES = Arrays.asList(
-      "com.agentdid127.converter"
+      "com.agentdid127.converter.plugin"
   );
 
   private final ClassLoader parentClassLoader;

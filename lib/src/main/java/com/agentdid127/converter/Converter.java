@@ -1,13 +1,15 @@
 package com.agentdid127.converter;
 
+import java.io.IOException;
+
 public abstract class Converter {
 
     private String name;
     private int priority;
 
     public Converter(String name, int priority) {
-	this.name = name;
-	this.priority = priority;
+	    this.name = name;
+	    this.priority = priority;
     }
 
     public String getName() {
@@ -18,5 +20,5 @@ public abstract class Converter {
 	return priority;
     }
 
-    public abstract void convert();
+    public abstract void convert() throws IOException;
 }
