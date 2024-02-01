@@ -6,7 +6,7 @@ import java.util.List;
 public abstract class Plugin {
 
     protected String name;
-    protected List<Converter> converters;
+    private List<Converter> converters;
     
     public Plugin(String name) {
 	this.name = name;
@@ -22,6 +22,7 @@ public abstract class Plugin {
     public abstract void onUnload();
 
     public List<Converter> getConverters() {
-	return converters;
+	return this.converters;
     }
+
 } // Plugin

@@ -53,7 +53,8 @@ public class PluginLoader {
 	final ClassLoader currentClassLoader = Thread.currentThread().getContextClassLoader();
 	try {
 	    Thread.currentThread().setContextClassLoader(pluginClassLoader);
-	    for (Plugin plugin : ServiceLoader.load(Plugin.class, pluginClassLoader)) {
+	    ServiceLoader<Plugin> loader = ServiceLoader.load(Plugin.class, pluginClassLoader);
+	    for (Plugin plugin : loader) {
 		installPlugin(plugin);
 	    }
 	} finally {
@@ -62,7 +63,7 @@ public class PluginLoader {
     }
 
 
-    private void installPlugin(final Plugin plugin) {
+    private void installPlugin(Plugin plugin) {
 	if (this.plugins.containsKey(plugin.getName())) {
 	    System.out.println("Failed to load Plugin: " + plugin.getName());
 	    return;
