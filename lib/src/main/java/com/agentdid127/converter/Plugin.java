@@ -4,17 +4,17 @@ import com.agentdid127.converter.iface.Application;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Plugin<T extends Converter> {
+public abstract class Plugin<T extends Runner> {
 
     protected String name;
     protected String type;
-    private List<T> converters;
+    private List<T> runners;
     private Application application;
 
     public Plugin(String name, String type) {
       this.name = name;
       this.type = type;
-      this.converters = new ArrayList<>();
+      this.runners = new ArrayList<>();
     }
     
     public String getName() {
@@ -31,8 +31,8 @@ public abstract class Plugin<T extends Converter> {
 
     public abstract void onUnload();
 
-    public List<T> getConverters() {
-	return this.converters;
+    public List<T> getRunners() {
+	return this.runners;
     }
 
     public void setApplication(Application app) {
