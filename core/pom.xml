@@ -16,10 +16,10 @@
 
     <dependencies>
       <dependency>
-	<artifactId>Lib</artifactId>
-
-	<groupId>com.agentdid127.convertertools</groupId>
-	<version>1.0-SNAPSHOT</version>
+          <artifactId>Lib</artifactId>
+          <groupId>com.agentdid127.convertertools</groupId>
+          <version>1.0-SNAPSHOT</version>
+          <scope>provided</scope>
       </dependency>
     </dependencies>
 </project>
