@@ -12,8 +12,15 @@ public class Logger {
 
     public static void setLogger(org.slf4j.Logger logger) {
         Logger.logger = logger;
-        setStreams(null, null);
+        if (logger != null) {
+            setStreams(null, null);
+        }
     }
+
+    public static org.slf4j.Logger getLogger() {
+        return Logger.logger;
+    }
+
     public static void setStream(PrintStream stream) {
         Logger.stream = stream;
     }
@@ -25,7 +32,9 @@ public class Logger {
     public static void setStreams(PrintStream stream, PrintStream errorStream) {
         setStream(stream);
         setErrorStream(errorStream);
-        setLogger(null);
+        if (stream != null && errorStream != null) {
+            setLogger(null);
+        }
     }
 
     public static void log(String message) {
