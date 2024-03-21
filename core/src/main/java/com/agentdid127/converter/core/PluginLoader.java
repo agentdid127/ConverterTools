@@ -129,7 +129,6 @@ public class PluginLoader<T extends Plugin> implements IPluginLoader<T> {
 		}
 
 
-		List<URL> loadURLS = new ArrayList<>();
 		List<JarFile> loadJars = new ArrayList<>();
 		List<String> loadPath = new ArrayList<>();
 		for (String s : loadOrder) {
